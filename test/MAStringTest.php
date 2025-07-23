@@ -54,8 +54,8 @@ class MAStringTest extends TestCase
         ];
     }
 
-    #[DataProvider('dataProvider__construct_MAStringException_InvalidValue')]
-    public function test__construct_MAStringException_InvalidValue(string $value, string $expectedExceptionMessage)
+    #[DataProvider('dataProvider__construct_MAStringException')]
+    public function test__construct_MAStringException(string $value, string $expectedExceptionMessage)
     {
         $this->expectException(exception: MAStringException::class);
         $this->expectExceptionMessage(message: $expectedExceptionMessage);
@@ -63,7 +63,7 @@ class MAStringTest extends TestCase
         new MAStringTest_MAString_Sample(value: $value);
     }
 
-    public static function dataProvider__construct_MAStringException_InvalidValue(): array
+    public static function dataProvider__construct_MAStringException(): array
     {
         return [
             '' => [
