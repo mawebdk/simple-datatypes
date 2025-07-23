@@ -27,15 +27,19 @@ else:
 endif; 
 ```
 
-Creation and usage.
+Constructors and usage.
 ```
 try {
-    $myInteger = new MyIntegerClass(value: $value);
+    $myInteger1 = new MyIntegerClass(value: 123);
+    $myInteger2 = MyIntegerClass::createFromValue(value: 456);
+    $myInteger3 = MyIntegerClass::createFromValue(value: null);
 } catch (MAIntegerException $e) {
     // Error handling.
 }
 
-echo $maInteger->value;
+echo $maInteger1->value;   // 123
+echo $maInteger2->value;   // 456.
+echo $maInteger3;          // null
 ```
 
 ## Usage of MAString
@@ -62,13 +66,17 @@ else:
 endif; 
 ```
 
-Creation and usage.
+Constructors and usage.
 ```
 try {
-    $myString = new MyStringClass(value: $value);
+    $myString1 = new MyStringClass(value: 'Hello');
+    $myString2 = MyStringClass::createFromValue(value: 'World);
+    $myString3 = MyStringClass::createFromValue(value: null);
 } catch (MAStringException $e) {
     // Error handling.
 }
 
-echo $maString->value;
+echo $maString1->value;   // 'Hello'
+echo $maString2->value;   // 'World'
+echo $maString3           // null
 ```
