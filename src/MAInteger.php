@@ -7,6 +7,21 @@ namespace MawebDK\SimpleDatatypes;
 abstract class MAInteger
 {
     /**
+     * Static constructor.
+     * @param int|null $value       Value.
+     * @return self|null            New instance of the implementing class, null if the supplied value is null.
+     * @throws MAIntegerException   Failed to determine if the given value is a valid value or value is invalid.
+     */
+    public static function createFromValue(?int $value): ?self
+    {
+        if (is_null($value)):
+            return null;
+        else:
+            return new static(value: $value);
+        endif;
+    }
+
+    /**
      * Determines is the given value is a valid value.
      * @param int $value            Value being evaluated.
      * @return bool                 True if value is a valid value, false otherwise.

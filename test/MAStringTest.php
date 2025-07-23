@@ -41,7 +41,7 @@ class MAStringTest extends TestCase
     {
         $maString = new MAStringTest_MAString_Sample(value: $value);
 
-        $this->assertSame(expected: $maString->value, actual: $value);
+        $this->assertSame(expected: $value, actual: $maString->value);
     }
 
     public static function dataProvider__construct(): array
@@ -54,8 +54,8 @@ class MAStringTest extends TestCase
         ];
     }
 
-    #[DataProvider('dataProvider__construct_MAStringException_InvalidValue')]
-    public function test__construct_MAStringException_InvalidValue(string $value, string $expectedExceptionMessage)
+    #[DataProvider('dataProvider__construct_MAStringException')]
+    public function test__construct_MAStringException(string $value, string $expectedExceptionMessage)
     {
         $this->expectException(exception: MAStringException::class);
         $this->expectExceptionMessage(message: $expectedExceptionMessage);
@@ -63,7 +63,56 @@ class MAStringTest extends TestCase
         new MAStringTest_MAString_Sample(value: $value);
     }
 
-    public static function dataProvider__construct_MAStringException_InvalidValue(): array
+    public static function dataProvider__construct_MAStringException(): array
+    {
+        return [
+            '' => [
+                'value'                    => '',
+                'expectedExceptionMessage' => 'Value "" is not valid.'
+            ],
+            'abcd' => [
+                'value'                    => 'abcd',
+                'expectedExceptionMessage' => 'Value "abcd" is not valid.'
+            ],
+            'ABCD' => [
+                'value'                    => 'ABCD',
+                'expectedExceptionMessage' => 'Value "ABCD" is not valid.'
+            ],
+        ];
+    }
+
+    /**
+     * @throws MAStringException
+     */
+    #[DataProvider('dataProviderCreateFromValue')]
+    public function testCreateFromValue(?string $value)
+    {
+        $maString = MAStringTest_MAString_Sample::createFromValue(value: $value);
+
+        $this->assertSame(expected: $value, actual: $maString?->value);
+    }
+
+    public static function dataProviderCreateFromValue(): array
+    {
+        return [
+            'null' => ['value' => null],
+            'a'    => ['value' => 'a'],
+            'A'    => ['value' => 'A'],
+            'abc'  => ['value' => 'abc'],
+            'ABC'  => ['value' => 'ABC'],
+        ];
+    }
+
+    #[DataProvider('dataProviderCreateFromValue_MAStringException')]
+    public function testCreateFromValue_MAStringException(string $value, string $expectedExceptionMessage)
+    {
+        $this->expectException(exception: MAStringException::class);
+        $this->expectExceptionMessage(message: $expectedExceptionMessage);
+
+        MAStringTest_MAString_Sample::createFromValue(value: $value);
+    }
+
+    public static function dataProviderCreateFromValue_MAStringException(): array
     {
         return [
             '' => [
