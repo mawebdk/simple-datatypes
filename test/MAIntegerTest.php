@@ -24,9 +24,9 @@ class MAIntegerTest extends TestCase
     {
         return [
             'PHP_INT_MIN' => ['value' => PHP_INT_MIN, 'expectedIsValid' => false],
-            '-1'          => ['value' => -1,          'expectedIsValid' => false],
-            '0'           => ['value' => 0,           'expectedIsValid' => false],
-            '1'           => ['value' => 1,           'expectedIsValid' => true],
+            '-101'        => ['value' => -101,        'expectedIsValid' => false],
+            '-100'        => ['value' => -100,        'expectedIsValid' => true],
+            '0'           => ['value' => 0,           'expectedIsValid' => true],
             '100'         => ['value' => 100,         'expectedIsValid' => true],
             '101'         => ['value' => 101,         'expectedIsValid' => false],
             'PHP_INT_MAX' => ['value' => PHP_INT_MAX, 'expectedIsValid' => false],
@@ -47,8 +47,9 @@ class MAIntegerTest extends TestCase
     public static function dataProvider__construct(): array
     {
         return [
-            '1'   => ['value' => 1],
-            '100' => ['value' => 100],
+            '-100' => ['value' => -100],
+            '0'    => ['value' => 0],
+            '100'  => ['value' => 100],
         ];
     }
 
@@ -65,8 +66,7 @@ class MAIntegerTest extends TestCase
     {
         return [
             'PHP_INT_MIN' => ['value' => PHP_INT_MIN, 'expectedExceptionMessage' => 'Value -9223372036854775808 is not valid.'],
-            '-1'          => ['value' => -1,          'expectedExceptionMessage' => 'Value -1 is not valid.'],
-            '0'           => ['value' => 0,           'expectedExceptionMessage' => 'Value 0 is not valid.'],
+            '-101'        => ['value' => -101,        'expectedExceptionMessage' => 'Value -101 is not valid.'],
             '101'         => ['value' => 101,         'expectedExceptionMessage' => 'Value 101 is not valid.'],
             'PHP_INT_MAX' => ['value' => PHP_INT_MAX, 'expectedExceptionMessage' => 'Value 9223372036854775807 is not valid.'],
         ];
@@ -87,7 +87,8 @@ class MAIntegerTest extends TestCase
     {
         return [
             'null' => ['value' => null],
-            '1'    => ['value' => 1],
+            '-100' => ['value' => -100],
+            '0'    => ['value' => 0],
             '100'  => ['value' => 100],
         ];
     }
@@ -105,10 +106,34 @@ class MAIntegerTest extends TestCase
     {
         return [
             'PHP_INT_MIN' => ['value' => PHP_INT_MIN, 'expectedExceptionMessage' => 'Value -9223372036854775808 is not valid.'],
-            '-1'          => ['value' => -1,          'expectedExceptionMessage' => 'Value -1 is not valid.'],
-            '0'           => ['value' => 0,           'expectedExceptionMessage' => 'Value 0 is not valid.'],
+            '-101'        => ['value' => -101,        'expectedExceptionMessage' => 'Value -101 is not valid.'],
             '101'         => ['value' => 101,         'expectedExceptionMessage' => 'Value 101 is not valid.'],
             'PHP_INT_MAX' => ['value' => PHP_INT_MAX, 'expectedExceptionMessage' => 'Value 9223372036854775807 is not valid.'],
+        ];
+    }
+
+    /**
+     * @throws MAIntegerException
+     */
+    #[DataProvider('dataProvider__toString')]
+    public function test__toString(int $value, string $expectedResult)
+    {
+        $maInteger = new MAIntegerTest_MAInteger_Sample(value: $value);
+
+        $this->assertSame(expected: $expectedResult, actual: $maInteger->__toString());
+    }
+
+    public static function dataProvider__toString(): array
+    {
+        return [
+            '-99' => [
+                'value'          => -99,
+                'expectedResult' => '-99'
+            ],
+            '99' => [
+                'value'          => 99,
+                'expectedResult' => '99'
+            ],
         ];
     }
 }
@@ -117,6 +142,6 @@ class MAIntegerTest_MAInteger_Sample extends MAInteger
 {
     public static function isValidValue(int $value): bool
     {
-        return (($value >= 1) && ($value <= 100));
+        return (($value >= -100) && ($value <= 100));
     }
 }

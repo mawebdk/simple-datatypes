@@ -42,6 +42,8 @@ echo $maInteger2->value;   // 456.
 echo $maInteger3;          // null
 ```
 
+MAInteger implements Stringable, so any object extending MAInteger can be used as a string parameter.
+
 ## Usage of MAString
 Create a class extending MAString and implement method isValidValue() returning whether the given string value is valid or not.
 Throw an MAStringException if unable to decide if the given string value is valid or not.
@@ -80,3 +82,5 @@ echo $maString1->value;   // 'Hello'
 echo $maString2->value;   // 'World'
 echo $maString3           // null
 ```
+
+MAString implements Stringable, so any object extending MAString can be used as a string parameter.

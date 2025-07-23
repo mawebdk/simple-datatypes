@@ -1,10 +1,12 @@
 <?php
 namespace MawebDK\SimpleDatatypes;
 
+use Stringable;
+
 /**
  * Integer value with limitations specified by the abstract method isValidValue().
  */
-abstract class MAInteger
+abstract class MAInteger implements Stringable
 {
     /**
      * Static constructor.
@@ -39,5 +41,14 @@ abstract class MAInteger
         if (!static::isValidValue(value: $value)):
             throw new MAIntegerException(message: sprintf('Value %d is not valid.', $value));
         endif;
+    }
+
+    /**
+     * Returns the string representation of the object.
+     * @return string   String representation of the object.
+     */
+    public function __toString(): string
+    {
+        return $this->value;
     }
 }
