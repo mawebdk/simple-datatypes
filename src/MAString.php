@@ -1,10 +1,12 @@
 <?php
 namespace MawebDK\SimpleDatatypes;
 
+use Stringable;
+
 /**
  * String value with limitations specified by the abstract method isValidValue().
  */
-abstract class MAString
+abstract class MAString implements Stringable
 {
     /**
      * Static constructor.
@@ -39,5 +41,14 @@ abstract class MAString
         if (!static::isValidValue(value: $value)):
             throw new MAStringException(message: sprintf('Value "%s" is not valid.', $value));
         endif;
+    }
+
+    /**
+     * Returns the string representation of the object.
+     * @return string   String representation of the object.
+     */
+    public function __toString(): string
+    {
+        return $this->value;
     }
 }

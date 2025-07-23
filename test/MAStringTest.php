@@ -129,6 +129,27 @@ class MAStringTest extends TestCase
             ],
         ];
     }
+
+    /**
+     * @throws MAStringException
+     */
+    #[DataProvider('dataProvider__toString')]
+    public function test__toString(string $value)
+    {
+        $maString = new MAStringTest_MAString_Sample(value: $value);
+
+        $this->assertSame(expected: $value, actual: $maString->__toString());
+    }
+
+    public static function dataProvider__toString(): array
+    {
+        return [
+            ['value' => 'a'],
+            ['value' => 'A'],
+            ['value' => 'abc'],
+            ['value' => 'ABC'],
+        ];
+    }
 }
 
 class MAStringTest_MAString_Sample extends MAString
