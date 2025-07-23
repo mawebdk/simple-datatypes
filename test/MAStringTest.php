@@ -41,7 +41,7 @@ class MAStringTest extends TestCase
     {
         $maString = new MAStringTest_MAString_Sample(value: $value);
 
-        $this->assertSame(expected: $maString->value, actual: $value);
+        $this->assertSame(expected: $value, actual: $maString->value);
     }
 
     public static function dataProvider__construct(): array

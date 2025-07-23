@@ -41,7 +41,7 @@ class MAIntegerTest extends TestCase
     {
         $maInteger = new MAIntegerTest_MAInteger_Sample(value: $value);
 
-        $this->assertSame(expected: $maInteger->value, actual: $value);
+        $this->assertSame(expected: $value, actual: $maInteger->value);
     }
 
     public static function dataProvider__construct(): array
