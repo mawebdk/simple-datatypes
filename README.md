@@ -78,8 +78,8 @@ try {
     // Error handling.
 }
 
-echo $maString1->value;   // 'Hello'
-echo $maString2->value;   // 'World'
+echo $maString1->value;   // "Hello"
+echo $maString2->value;   // "World"
 echo $maString3           // null
 ```
 
