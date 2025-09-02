@@ -49,6 +49,6 @@ abstract class MAString implements Stringable
      */
     public function __toString(): string
     {
-        return $this->value;
+        return sprintf('"%s"', $this->value);
     }
 }
