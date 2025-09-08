@@ -37,9 +37,9 @@ try {
     // Error handling.
 }
 
-echo $maInteger1->value;   // 123
-echo $maInteger2->value;   // 456.
-echo $maInteger3;          // null
+echo $maInteger1->value;    // 123
+echo (string)$maInteger2;   // 456.
+echo $maInteger3;           // null
 ```
 
 MAInteger implements Stringable, so any object extending MAInteger can be used as a string parameter.
@@ -78,9 +78,9 @@ try {
     // Error handling.
 }
 
-echo $maString1->value;   // "Hello"
-echo $maString2->value;   // "World"
-echo $maString3           // null
+echo $maString1->value;    // Hello
+echo (string)$maString2;   // World
+echo $maString3            // null
 ```
 
 MAString implements Stringable, so any object extending MAString can be used as a string parameter.
