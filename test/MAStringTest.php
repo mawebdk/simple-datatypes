@@ -149,19 +149,19 @@ class MAStringTest extends TestCase
         return [
             'a' => [
                 'value'            => 'a',
-                'expectedToString' => '"a"',
+                'expectedToString' => 'a',
             ],
             'A' => [
                 'value'            => 'A',
-                'expectedToString' => '"A"',
+                'expectedToString' => 'A',
             ],
             'abc' => [
                 'value'            => 'abc',
-                'expectedToString' => '"abc"',
+                'expectedToString' => 'abc',
             ],
             'ABC' => [
                 'value'            => 'ABC',
-                'expectedToString' => '"ABC"'
+                'expectedToString' => 'ABC'
             ],
         ];
     }
