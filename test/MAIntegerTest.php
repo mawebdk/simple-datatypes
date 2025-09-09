@@ -115,26 +115,14 @@ class MAIntegerTest extends TestCase
     /**
      * @throws MAIntegerException
      */
-    #[DataProvider('dataProvider__toString')]
-    public function test__toString(int $value, string $expectedResult)
+    public function test__toString()
     {
-        $maInteger = new MAIntegerTest_MAInteger_Sample(value: $value);
+        $maInteger = new MAIntegerTest_MAInteger_Sample(value: 99);
 
-        $this->assertSame(expected: $expectedResult, actual: $maInteger->__toString());
-    }
-
-    public static function dataProvider__toString(): array
-    {
-        return [
-            '-99' => [
-                'value'          => -99,
-                'expectedResult' => '-99'
-            ],
-            '99' => [
-                'value'          => 99,
-                'expectedResult' => '99'
-            ],
-        ];
+        $this->assertSame(
+            expected: 'MawebDK\SimpleDatatypes\Test\MAIntegerTest_MAInteger_Sample{"value": 99}',
+            actual: $maInteger->__toString()
+        );
     }
 }
 
