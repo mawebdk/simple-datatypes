@@ -28,6 +28,7 @@ endif;
 ```
 
 Constructors and usage.
+Note: The method createFromValue will return null if the given value is null.
 ```
 try {
     $myInteger1 = new MyIntegerClass(value: 123);
@@ -37,12 +38,17 @@ try {
     // Error handling.
 }
 
-echo $maInteger1->value;    // 123
-echo (string)$maInteger2;   // 456.
-echo $maInteger3;           // null
+echo $maInteger1->value;   // 123
+echo $maInteger2->value;   // 456.
+echo $maInteger3;          // null
 ```
 
-MAInteger implements Stringable, so any object extending MAInteger can be used as a string parameter.
+MAInteger implements Stringable with the primary purpose to simplify logging and generate exception messages.
+```
+$myInteger = new MyIntegerClass(value: 123);
+
+echo (string)$maInteger;   // MyIntegerClass{"value": 123}
+```
 
 ## Usage of MAString
 Create a class extending MAString and implement method isValidValue() returning whether the given string value is valid or not.
@@ -69,6 +75,7 @@ endif;
 ```
 
 Constructors and usage.
+Note: The method createFromValue will return null if the given value is null.
 ```
 try {
     $myString1 = new MyStringClass(value: 'Hello');
@@ -78,9 +85,14 @@ try {
     // Error handling.
 }
 
-echo $maString1->value;    // Hello
-echo (string)$maString2;   // World
-echo $maString3            // null
+echo $maString1->value;   // Hello
+echo $maString2->value;   // World
+echo $maString3           // null
 ```
 
-MAString implements Stringable, so any object extending MAString can be used as a string parameter.
+MAString implements Stringable with the primary purpose to simplify logging and generate exception messages.
+```
+$myString = new MyStringClass(value: 'Hello World');
+
+echo (string)$maString;   // MyStringClass{"value": "Hello World"}
+```

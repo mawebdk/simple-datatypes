@@ -4,8 +4,46 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b772370eeb0632a46bfe94098c2aded6",
-    "packages": [],
+    "content-hash": "cc0f9431825889cfd84ecd76c05bf273",
+    "packages": [
+        {
+            "name": "mawebdk/to-string-builder",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mawebdk/to-string-builder.git",
+                "reference": "d317c050b74b47e72ae1fe79f63c2d7026b041d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mawebdk/to-string-builder/zipball/d317c050b74b47e72ae1fe79f63c2d7026b041d9",
+                "reference": "d317c050b74b47e72ae1fe79f63c2d7026b041d9",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.3.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^12.0.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MawebDK\\ToStringBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "description": "Builder class for __toString() methods.",
+            "support": {
+                "issues": "https://github.com/mawebdk/to-string-builder/issues",
+                "source": "https://github.com/mawebdk/to-string-builder/tree/2.0.1"
+            },
+            "time": "2025-09-04T15:17:37+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "myclabs/deep-copy",

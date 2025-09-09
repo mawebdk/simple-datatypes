@@ -130,40 +130,14 @@ class MAStringTest extends TestCase
         ];
     }
 
-    /**
-     * @throws MAStringException
-     */
-    #[DataProvider('dataProvider__toString')]
-    public function test__toString(string $value, string $expectedToString)
+    public function test__toString()
     {
-        $maString = new MAStringTest_MAString_Sample(value: $value);
+        $maString = new MAStringTest_MAString_Sample(value: 'ABC');
 
         $this->assertSame(
-            expected: $expectedToString,
+            expected: 'MawebDK\SimpleDatatypes\Test\MAStringTest_MAString_Sample{"value": "ABC"}',
             actual: $maString->__toString()
         );
-    }
-
-    public static function dataProvider__toString(): array
-    {
-        return [
-            'a' => [
-                'value'            => 'a',
-                'expectedToString' => 'a',
-            ],
-            'A' => [
-                'value'            => 'A',
-                'expectedToString' => 'A',
-            ],
-            'abc' => [
-                'value'            => 'abc',
-                'expectedToString' => 'abc',
-            ],
-            'ABC' => [
-                'value'            => 'ABC',
-                'expectedToString' => 'ABC'
-            ],
-        ];
     }
 }
 

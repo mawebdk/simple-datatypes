@@ -1,6 +1,7 @@
 <?php
 namespace MawebDK\SimpleDatatypes;
 
+use MawebDK\ToStringBuilder\ToStringBuilder;
 use Stringable;
 
 /**
@@ -49,6 +50,10 @@ abstract class MAString implements Stringable
      */
     public function __toString(): string
     {
-        return $this->value;
+        $toStringBuilder = new ToStringBuilder(object: $this);
+
+        return $toStringBuilder
+            ->add(name: 'value', value: $this->value)
+            ->build();
     }
 }
